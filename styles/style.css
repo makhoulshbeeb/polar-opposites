@@ -9,7 +9,7 @@ body{
     display: flex;
     width: 100dvw;
     justify-content: space-between;
-    align-items: stretch;
+    align-items: center;
 }
 
 #right{
@@ -28,21 +28,21 @@ body{
     flex-direction: column;
     justify-content: space-around;
 }
-#buttons{
+.buttons{
     width:40dvw;
     height: 40dvh;
     display: flex;
     flex-direction: column;
-    gap:4dvh;
+    gap:5dvh;
     align-items: center;
  
 }
-#play, #customize{
+.buttons button{
     width: 60%;
-    height:30%;
+    height:32%;
     font-size: 32px;
     border-radius: 32px;
-    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-family: 'Londrina Solid';
     color: whitesmoke;
     border: 0;
     cursor: pointer;
@@ -56,4 +56,36 @@ body{
 }
 #customize{
     background-image: radial-gradient(#2EB0B3,#22B6B9);
+}
+#level1:active, #level2:active{
+    font-size: 30px;
+    border: 5px solid #121212;
+}
+#level1{
+    width: 70%;
+    background-image: radial-gradient(#A5322F,#B92522);
+}
+#level2{
+    width: 70%;
+    background-image: radial-gradient(#2EB0B3,#22B6B9);
+}
+#levels .buttons{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+}
+#levels{
+    background-color: #121212;
+    border-radius: 32px;
+    padding:5dvh 5dvw;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    align-content: center;
+    margin-left: 16dvw;
+    display: none;
 }
