@@ -4,90 +4,57 @@
     box-sizing: border-box;
     font-family: Arial, sans-serif;
 }
-
-body {
+body{
+    background-color: #2c2c2c;
     display: flex;
-    justify-content: flex-start;
-    align-items: flex-start;
-    height: 100vh;
-    background-color: #333;
-    position: relative;
+    width: 100dvw;
+    justify-content: space-between;
+    align-items: stretch;
 }
 
-.container {
-    position: relative;
-}
-
-.title-image {
-    position: absolute;
-    top: 56px;
-    left: 100px;
-    width: 840px;
-    height: 260px;
-}
-
-.characters {
-    position: absolute;
-    bottom: 40%;
-    right: 0;
+#right{
     display: flex;
-    align-items: flex-end;
+    width:30dvw;
+    justify-content: flex-end;
 }
-
-.character {
-    width: 200px;
-    height: auto;
+#right img{
+    height: 100dvh;
 }
-
-.character-red {
-    margin-right: -200px;
-    margin-bottom: 370px ;
+#left{
+    margin-left: 8dvw;
+    width: 60dvw;
+    height: 100dvh;
+    display:flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
-
-.character-blue {
-    margin-right: 0;
-}
-
-.buttons {
-    position: absolute;
-    top: 386px;
-    left: 230px;
+#buttons{
+    width:40dvw;
+    height: 40dvh;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap:4dvh;
+    align-items: center;
+ 
 }
-
-.btn {
-    display: inline-block;
-    width: 320px;
-    height: 101px;
-    text-decoration: none;
-    color: #D1D1D1;
-    font-size: 48px;
-    font-family: 'Londrina Solid', sans-serif;
+#play, #customize{
+    width: 60%;
+    height:30%;
+    font-size: 32px;
+    font-weight: bold;
     border-radius: 32px;
-    transition: background-color 0.3s ease;
-    text-align: center;
-    line-height: 101px;
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: whitesmoke;
+    border: 0;
+    cursor: pointer;
 }
-
-.btn-play {
-    background-color: #C9302C;
+#play:active, #customize:active{
+    font-size: 30px;
+    border: 5px solid #2c2c2c;
 }
-
-.btn-play:hover {
-    background-color: #D7221E;
+#play{
+    background-image: radial-gradient(#A5322F,#B92522);
 }
-
-.btn-customize {
-    background-color: #17B5BF;
+#customize{
+    background-image: radial-gradient(#2EB0B3,#22B6B9);
 }
-
-.btn-customize:hover {
-    background-color: #1ED3D7;
-}
-
-#grad {
-    background-image: radial-gradient(red, blue);
-}
-
