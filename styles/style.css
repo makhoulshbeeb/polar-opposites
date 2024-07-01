@@ -97,7 +97,7 @@ body{
     bottom:0;
     z-index: -1;
     height:25dvh;
-    width: 100dvw;
+    width: 100%;
     overflow:hidden ;
 }
 #terrainUp{
@@ -105,7 +105,7 @@ body{
     top:0;
     z-index: -1;
     height:25dvh;
-    width: 100dvw;
+    width: 100%;
     overflow:hidden ;
 }
 
