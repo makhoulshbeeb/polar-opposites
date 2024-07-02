@@ -159,7 +159,6 @@ const configUpper = {
     scene: UpperScene,
     parent: 'upper-scene'
 };
->>>>>>> 4abafd97b8d3df66e7519750ad1f98dc0b37b6c1
 const configLower = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,
