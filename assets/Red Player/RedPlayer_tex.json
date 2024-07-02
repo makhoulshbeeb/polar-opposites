@@ -1,0 +1,18 @@
+{
+  "width": 512,
+  "imagePath": "RedPlayer_tex.png",
+  "height": 256,
+  "name": "RedPlayer",
+  "SubTexture": [
+    { "width": 39, "y": 1, "height": 127, "name": "Left Thigh", "x": 199 },
+    { "width": 39, "y": 130, "height": 115, "name": "Right Calf", "x": 199 },
+    { "width": 29, "y": 163, "height": 71, "name": "Left Bicep", "x": 101 },
+    { "width": 29, "y": 101, "height": 98, "name": "Left Arm", "x": 240 },
+    { "width": 39, "y": 130, "height": 115, "name": "Left Calf", "x": 158 },
+    { "width": 39, "y": 1, "height": 127, "name": "Right Thigh", "x": 158 },
+    { "width": 155, "y": 1, "height": 160, "name": "Torso", "x": 1 },
+    { "width": 67, "y": 163, "height": 66, "name": "Head", "x": 1 },
+    { "width": 29, "y": 163, "height": 71, "name": "Right Bicep", "x": 70 },
+    { "width": 29, "y": 1, "height": 98, "name": "Right Arm", "x": 240 }
+  ]
+}
