@@ -1,24 +1,46 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Level 1</title>
   <link rel="stylesheet" href="/styles/style.css">
   <script src="scripts/lib/phaser.min.js"></script>
-  </script>
 </head>
-
 <body>
-  <div id="level-conatiner">
-    <div id="sidebar"></div>
+  <div id="level-container">
     <div id="game-container">
       <div id="upper-scene" class="scene"></div>
       <div id="lower-scene" class="scene"></div>
     </div>
+    <div id="sidebar">
+      <img src='assets/Icons/switch.png'>
+      <img src='assets/Icons/switch.png'>
+      <img src='assets/Icons/switch.png'>
+    </div>
   </div>
   <script src="/scripts/scenes/Level1.js"></script>
-</body>
+  <script>
+    document.addEventListener('DOMContentLoaded', (event) => {
+      const sidebar = document.getElementById('sidebar');
+      const images = sidebar.getElementsByTagName('img');
+      let switchCounter = images.length;
 
+      function updateImages() {
+        if (switchCounter > 0) {
+          images[switchCounter - 1].style.display = 'none';
+        }
+      }
+
+      document.addEventListener('keydown', (event) => {
+        if (event.code === 'Space') {
+          if (switchCounter > 0) {
+            switchCounter--;
+            updateImages();
+          }
+        }
+      });
+    });
+  </script>
+</body>
 </html>

@@ -1,42 +1,57 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Polar Opposites</title>
-    <link rel="stylesheet" href="/styles/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@400&display=swap"
+        rel="stylesheet"
+    />
     <script src="scripts/lib/jquery-3.7.1.js"></script>
     <script src="scripts/lib/p5.min.js"></script>
     <script src="scripts/lib/phaser.min.js"></script>
 </head>
 
 <body>
-    <div id="terrainUp">
-    </div>
+    <div id="terrainUp"></div>
     <div id="main">
         <div id="left">
-            <img id="title" src="assets/Polar Opposites.svg" alt="Polar Opposites">
+            <img
+                id="title"
+                src="assets/Polar Opposites.svg"
+                alt="Polar Opposites"
+            />
             <div class="buttons">
                 <button id="play">Play</button>
-                <button id="customize">Customize</button>
+                <button
+                    id="customize"
+                    onclick="window.location.href='customize.html'"
+                >
+                    Customize
+                </button>
             </div>
         </div>
-        <div id="levels">
+        <div id="levels" >
+            <div class="side">
+                <a href="index.html"><img src="assets/Icons/back-Arrow.png" class="image" /></a> 
+             </div>
             <div class="buttons">
                 <button id="level1">Level 1</button>
                 <button id="level2">Level 2</button>
             </div>
+            <!-- <div class="side">
+
+            </div> -->
         </div>
         <div></div>
         <div id="right">
-            <img src="assets/Guys Running.svg">
+            <img src="assets/Guys Running.svg" />
         </div>
     </div>
     <div id="terrainDown"></div>
     <script src="scripts/Terrain.js"></script>
     <script src="scripts/MainMenuManager.js"></script>
 </body>
-
 </html>
