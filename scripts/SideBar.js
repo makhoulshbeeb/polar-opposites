@@ -11,7 +11,18 @@ document.addEventListener("keydown", (event) => {
       }
     }
 });
+const lives = document.querySelectorAll("#lives img");
 
+        document.addEventListener("keydown", (event) => {
+            if (event.code === "KeyS") {
+                for (let i = 0; i < lives.length; i++) {
+                    if (lives[i].src.includes("full_heart.png")) {
+                        lives[i].src = "assets/Icons/empty_heart.png";
+                        break;
+                    }
+                }
+            }
+        });
 
 
 
