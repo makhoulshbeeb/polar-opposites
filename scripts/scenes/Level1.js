@@ -8,6 +8,9 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer3', encodeURI('assets/City Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
+        this.load.spineBinary("player", encodeURI('assets/Red Player/RedPlayer.json'));
+        this.load.spineAtlas("player-atlas", encodeURI('assets/Red Player/RedPlayer.atlas'));
+
         this.cursors = this.input.keyboard.createCursorKeys();
     }
     create() {
@@ -16,6 +19,8 @@ class LowerScene extends Phaser.Scene {
         this.add.image(0, 0, 'layer3').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(1, 0.5);
         this.add.image(0, 0, 'layer2').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(1.5, 0.75);
         this.add.image(0, 0, 'layer1').setOrigin(0, 0.075).setScale(0.375, 0.375).setScrollFactor(2, 1);
+
+        const spineObject = this.add.spine(400, 500, "player", "player-atlas");
 
     }
     update() {
