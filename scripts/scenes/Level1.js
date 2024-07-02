@@ -9,8 +9,8 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
         this.load.spritesheet('running', encodeURI('assets/Red Player/Red_Run_spritesheet.png'),{frameWidth:398,frameHeight:416});
-        this.load.spritesheet('falling', encodeURI('assets/Red Player/Red_Falling.gif'),{frameWidth:398,frameHeight:419});
-        this.load.spritesheet('jumping', encodeURI('assets/Red Player/Red_Jump.gif'),{frameWidth:374,frameHeight:428});
+        this.load.spritesheet('falling', encodeURI('assets/Red Player/Red_Falling_spritesheet.png'),{frameWidth:398,frameHeight:419});
+        this.load.spritesheet('jumping', encodeURI('assets/Red Player/Red_Jump_spritesheet.png'),{frameWidth:374,frameHeight:428});
         this.load.spritesheet('idle', encodeURI('assets/Red Player/Red_Idle_spritesheet.png'),{frameWidth:398,frameHeight:419});
 
         this.cursors = this.input.keyboard.createCursorKeys();
@@ -25,7 +25,7 @@ class LowerScene extends Phaser.Scene {
         const config_idle = {
             key: 'idle_anim',
             frames: 'idle',
-            frameRate: 15,
+            frameRate: 9,
             repeat: -1
         };
         const config_run = {
@@ -34,10 +34,26 @@ class LowerScene extends Phaser.Scene {
             frameRate: 9,
             repeat: -1
         };
+        const config_jump = {
+            key: 'jump_anim',
+            frames: 'jumping',
+            frameRate: 9,
+            repeat: -1
+        };
+        const config_fall = {
+            key: 'fall_anim',
+            frames: 'falling',
+            frameRate: 9,
+            repeat: -1
+        };
 
         this.anims.create(config_idle);
         this.anims.create(config_run);
-        player=this.physics.add.sprite(0, 0, 'idle').play('idle_anim').setOrigin(0.5, 0.5).setScale(-0.2, -0.2);
+        this.anims.create(config_jump);
+        this.anims.create(config_fall);
+
+        player=this.physics.add.sprite(0, 0, 'idle').setOrigin(0.5, 0.5).setScale(-0.2, -0.2);
+        player.play('idle_anim');
         player.setBounce(0.2);
         player.setCollideWorldBounds(true);
     }

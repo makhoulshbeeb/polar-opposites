@@ -1,13 +1,13 @@
-var sketchDown = function(p) {
+var sketchDown = function (p) {
   var cols, rows;
   var scl = 12;
-  var w = window.innerWidth*1.1;
-  var h = window.innerHeight/4;
+  var w = window.innerWidth * 1.1;
+  var h = window.innerHeight / 3;
   var flying = 0;
   var terrain = [];
 
-  p.setup = function() {
-    p.createCanvas(1280, 240, p.WEBGL);
+  p.setup = function () {
+    p.createCanvas(window.innerWidth, window.innerHeight / 2, p.WEBGL);
     p.cols = w / scl;
     p.rows = h / scl;
 
@@ -19,7 +19,7 @@ var sketchDown = function(p) {
     }
   };
 
-  p.draw = function() {
+  p.draw = function () {
     flying -= 0.1;
     var yoff = flying;
     for (var y = 0; y < p.rows; y++) {
@@ -32,7 +32,7 @@ var sketchDown = function(p) {
     }
 
     p.background(44);
-    p.translate(0, window.innerHeight/20);
+    p.translate(0, -window.innerHeight/50);
     p.rotateX(p.PI / 6);
     p.fill(165, 50, 47, 150);
     p.translate(-w / 2, -h / 2);
@@ -45,18 +45,21 @@ var sketchDown = function(p) {
       p.endShape();
     }
   };
+  p.windowResized = function () {
+    p.resizeCanvas(window.innerWidth, window.innerHeight / 2);
+  };
 };
 
-var sketchUp = function(p) {
+var sketchUp = function (p) {
   var cols, rows;
   var scl = 12;
-  var w = window.innerWidth*1.1;
-  var h = window.innerHeight/4;
+  var w = window.innerWidth * 1.1;
+  var h = window.innerHeight / 4;
   var flying = 0;
   var terrain = [];
 
-  p.setup = function() {
-    p.createCanvas(1280, 240, p.WEBGL);
+  p.setup = function () {
+    p.createCanvas(window.innerWidth, window.innerHeight / 2, p.WEBGL);
     p.cols = w / scl;
     p.rows = h / scl;
 
@@ -68,8 +71,8 @@ var sketchUp = function(p) {
     }
   };
 
-  p.draw = function() {
-    flying -= 0.1;
+  p.draw = function () {
+    flying += 0.1;
     var yoff = flying;
     for (var y = 0; y < p.rows; y++) {
       var xoff = 0;
@@ -81,7 +84,7 @@ var sketchUp = function(p) {
     }
 
     p.background(44);
-    p.translate(0, -window.innerHeight/8);
+    p.translate(0, -window.innerHeight / 5.5);
     p.rotateX(-p.PI / 6);
     p.fill(34, 182, 185, 150);
     p.translate(-w / 2, -h / 2);
@@ -93,6 +96,9 @@ var sketchUp = function(p) {
       }
       p.endShape();
     }
+  };
+  p.windowResized = function () {
+    p.resizeCanvas(window.innerWidth, window.innerHeight / 2);
   };
 };
 
