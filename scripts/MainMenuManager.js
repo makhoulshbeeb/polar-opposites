@@ -1,4 +1,5 @@
 document.getElementById("play").addEventListener('click', function(){
-    $("#levels").toggle();
-    $("#left").toggle();
+    $("#levels").show();
+    document.getElementById("levels").style.display='flex';
+    $("#left").hide();
 })
