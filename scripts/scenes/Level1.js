@@ -141,13 +141,13 @@ class LowerScene extends Phaser.Scene {
 // }
 
 
-// const configUpper = {
-//     type: Phaser.AUTO,
-//     width: 800,
-//     height: 300,
-//     scene: UpperScene,
-//     parent: 'upper-scene'
-// };
+const configUpper = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 300,
+    scene: UpperScene,
+    parent: 'upper-scene'
+};
 const configLower = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,
