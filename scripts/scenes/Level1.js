@@ -84,16 +84,82 @@ class LowerScene extends Phaser.Scene {
     }
     
 }
-// const configUpper = {
+// const config = {
 //     type: Phaser.AUTO,
 //     width: 800,
-//     height: 300,
-//     scene: UpperScene,
-//     parent: 'upper-scene'
+//     height: 600,
+//     parent: 'game-container',
+//     physics: {
+//         default: 'matter',
+//         matter: {
+//             gravity: { y: 1 },
+//             debug: true
+//         }
+//     },
+//     scene: {
+//         preload: preload,
+//         create: create,
+//         update: update
+//     }
 // };
 
 let player;
 let cursors;
+// const game = new Phaser.Game(config);
+
+// let waterGirl, keys;
+
+// function preload() {
+//     this.load.image('background', 'assets/background.png');
+//     this.load.image('platform', 'assets/platform.png');
+//     this.load.image('waterGirl', 'assets/waterGirl.png');
+// }
+
+// function create() {
+//     this.add.tileSprite(400, 300, 800, 600, 'background');
+
+//     // Define custom paths as platforms
+//     const platforms = [
+//         this.matter.add.image(100, 500, 'platform', null, { isStatic: true }),
+//         this.matter.add.image(300, 400, 'platform', null, { isStatic: true }),
+//         this.matter.add.image(500, 300, 'platform', null, { isStatic: true }),
+//         this.matter.add.image(700, 200, 'platform', null, { isStatic: true })
+//     ];
+
+//     waterGirl = this.matter.add.sprite(100, 450, 'waterGirl');
+//     waterGirl.setFixedRotation(); // Prevent rotation when colliding
+
+//     keys = this.input.keyboard.addKeys('W,A,S,D');
+// }
+
+// function update() {
+//     const speed = 2;
+//     const jumpSpeed = -10;
+
+//     // WaterGirl controls
+//     if (keys.A.isDown) {
+//         waterGirl.setVelocityX(-speed);
+//     } else if (keys.D.isDown) {
+//         waterGirl.setVelocityX(speed);
+//     } else {
+//         waterGirl.setVelocityX(0);
+//     }
+
+//     // Matter.js handles jumps differently, we check if she is touching the ground first
+//     if (keys.W.isDown && waterGirl.body.velocity.y === 0) {
+//         waterGirl.setVelocityY(jumpSpeed); // Halved the jump speed with Matter.js
+//     }
+// }
+
+
+const configUpper = {
+    type: Phaser.AUTO,
+    width: 800,
+    height: 300,
+    scene: UpperScene,
+    parent: 'upper-scene'
+};
+>>>>>>> 4abafd97b8d3df66e7519750ad1f98dc0b37b6c1
 const configLower = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,

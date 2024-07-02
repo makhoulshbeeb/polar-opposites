@@ -1,24 +1,39 @@
 <!DOCTYPE html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Level 1</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Level 1</title>
-  <link rel="stylesheet" href="/styles/style.css">
-  <script src="scripts/lib/phaser.min.js"></script>
-  </script>
-</head>
+    <script src="scripts/lib/phaser.min.js"></script>
+  </head>
+  <body>
+    <div id="level-container">
+      <div id="game-container">
+        <div id="upper-scene" class="scene"></div>
+        <div id="lower-scene" class="scene"></div>
+      </div>
+      <div id="sidebar">
+        <div id="lives">
+          <img src="assets/Icons/full_heart.png" />
+          <img src="assets/Icons/full_heart.png" />
+          <img src="assets/Icons/full_heart.png" />
+        </div>
+      <div class="pause">
+        <img src="assets/Icons/pause.png">
+      </div>
 
-<body>
-  <div id="level-conatiner">
-    <div id="sidebar"></div>
-    <div id="game-container">
-      <div id="upper-scene" class="scene"></div>
-      <div id="lower-scene" class="scene"></div>
+        <div id="images">
+          <img id="switch1" src="assets/Icons/switch.png" />
+          <img id="switch2" src="assets/Icons/switch.png" />
+          <img id="switch3" src="assets/Icons/switch.png" />
+        </div>
+      </div>
     </div>
-  </div>
-  <script src="/scripts/scenes/Level1.js"></script>
-</body>
+    <script src="/scripts/scenes/Level1.js"></script>
 
+    <script src="/scripts/SideBar.js"></script>
+  </body>
 </html>

@@ -78,6 +78,7 @@ body{
     justify-content: center;
     align-items: center;
     align-content: center;
+    /* width: 87%; */
 }
 #levels{
     background-color: #121212;
@@ -85,12 +86,16 @@ body{
     padding:5dvh 5dvw;
     height: fit-content;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     justify-content: space-around;
     align-items: center;
     align-content: center;
     margin-left: 16dvw;
     display: none;
+}
+.side{
+    width:16%;
+   
 }
 
 #terrainDown{
@@ -110,12 +115,44 @@ body{
     overflow:hidden ;
 }
 
+.image{
+    width: 75px;
+    height: 75px;
+}
 /* ****** Levels ******  */
 
 #level-container {
     display: flex;
-
 }
 #sidebar{
     width: 16%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+#sidebar img {
+    display: block;
+    margin-bottom: 10px;
+    width: 70px;
+}
+#images img{
+    display: block;
+    width: 100px;
+}
+.pause {
+    background-color: #22B6B9;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+}
+
+.pause img {
+    width: 20px;
+    height: auto; /* Maintain aspect ratio */
+    max-height: 40px;
+    padding-top: 10px; /* Ensure it doesn't exceed container */
 }
