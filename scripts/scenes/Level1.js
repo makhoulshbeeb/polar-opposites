@@ -1,3 +1,4 @@
+let skin_red = localStorage.getItem('current_skin_1');
 class LowerScene extends Phaser.Scene {
     constructor() {
         super({ key: 'Level 1' });
@@ -9,10 +10,10 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer3', encodeURI('assets/City Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
-        this.load.spritesheet('running', encodeURI('assets/Red Player/Red_Run_spritesheet.png'), { frameWidth: 398, frameHeight: 416 });
-        this.load.spritesheet('falling', encodeURI('assets/Red Player/Red_Falling_spritesheet.png'), { frameWidth: 398, frameHeight: 419 });
-        this.load.spritesheet('jumping', encodeURI('assets/Red Player/Red_Jump_spritesheet.png'), { frameWidth: 374, frameHeight: 428 });
-        this.load.spritesheet('idle', encodeURI('assets/Red Player/Red_Idle_spritesheet.png'), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 398, frameHeight: 416 });
+        this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('jumping', encodeURI(`assets/Red Player/${skin_red}/Red_Jump_spritesheet.png`), { frameWidth: 374, frameHeight: 428 });
+        this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
 
         this.load.image('player', encodeURI("assets/Red Player/Red Player.svg"))
         cursors = this.input.keyboard.createCursorKeys();
@@ -34,7 +35,7 @@ class LowerScene extends Phaser.Scene {
         const config_run = {
             key: 'run_anim',
             frames: 'running',
-            frameRate: 12,
+            frameRate: 9,
             repeat: -1
         };
         const config_jump = {
@@ -152,13 +153,13 @@ let cursors;
 // }
 
 
-const configUpper = {
-    type: Phaser.AUTO,
-    width: 800,
-    height: 300,
-    scene: UpperScene,
-    parent: 'upper-scene'
-};
+// const configUpper = {
+//     type: Phaser.AUTO,
+//     width: 800,
+//     height: 300,
+//     scene: UpperScene,
+//     parent: 'upper-scene'
+// };
 const configLower = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,

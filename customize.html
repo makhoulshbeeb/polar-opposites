@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html>
+
 <head>
   <meta charset="UTF-8">
   <title>P5.js Sketch Example</title>
@@ -7,39 +8,34 @@
 
 
 </head>
+
 <body>
-    <button class="back_btn"><img src="./assets/back-Arrow 1.svg" alt=""></button>
-    <main>
-        <section class="player_customize  p_c_sec_2">
-  
-            <button id="change-player-1-left"><img src="./assets/red-left-arrow.svg" alt=""></button>
-            <div class="player">
-                <h1>player 1</h1>
-                <img src="" alt="">
-                <img src="" class=" player_1_skin"alt="">
-            </div>
-            <button id="change-player-1-right"><img src="./assets/red-right-arrow.svg" alt=""></button>
+  <button class="back_btn"><img src="./assets/back-Arrow 1.svg" alt=""></button>
+  <div id="main">
+    <div class="player_customize  p_c_sec_2">
+      <button id="change-player-1-left"><img src="./assets/red-left-arrow.svg" alt=""></button>
+      <div class="player">
+        <h1>player 1</h1>
+        <img src="" alt="">
+        <img src="" class=" player_1_skin" alt="">
+      </div>
+      <button id="change-player-1-right"><img src="./assets/red-right-arrow.svg" alt=""></button>
+    </div>
+    <div class="player_customize  p_c_sec_1">
+      <button id="change-player-2-left"><img src="./assets/blue-left-arrow.png" alt=""></button>
+      <div class="player">
+        <h1>player 2</h1>
+        <img src="" alt="">
+        <img src="" class="player_2_skin" alt="">
+      </div>
+      <button id="change-player-2-right"><img src="./assets/blue-right-arrow.png" alt=""></button>
+    </div>
+  </div>
 
 
-            
-    </section>
-    <section class="player_customize  p_c_sec_1">
-
-       
-            <button id="change-player-2-left"><img src="./assets/blue-left-arrow.png" alt=""></button>
-            <div class="player">
-                <h1>player 2</h1>
-                <img src="" alt="">
-                <img src="" class="player_2_skin" alt="">
-            </div>
-            <button id="change-player-2-right" ><img src="./assets/blue-right-arrow.png" alt=""></button>
-
-    </section>
-    </main>
+  <script type="module" src="./scripts/customize.js"></script>
 
 
-    <script type="module" src="./scripts/customize.js"></script>
+</body>
 
-
-  </body>
 </html>
