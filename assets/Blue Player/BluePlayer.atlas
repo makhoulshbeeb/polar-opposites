@@ -20,7 +20,7 @@ Right Calf
   index: -1
 Left Bicep
   rotate: false
-  xy: 70, 163
+  xy: 101, 163
   size: 29, 71
   orig: 29, 88
   offset: 0, 0
@@ -62,7 +62,7 @@ Head
   index: -1
 Right Bicep
   rotate: false
-  xy: 101, 163
+  xy: 70, 163
   size: 29, 71
   orig: 29, 88
   offset: 0, 0

@@ -8,7 +8,6 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer3', encodeURI('assets/City Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
-        this.load.spineBinary("player", encodeURI('assets/Red Player/RedPlayer.json'));
         this.load.spineAtlas("player-atlas", encodeURI('assets/Red Player/RedPlayer.atlas'));
 
         this.cursors = this.input.keyboard.createCursorKeys();

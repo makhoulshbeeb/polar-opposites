@@ -1,8 +1,8 @@
 var sketchDown = function(p) {
   var cols, rows;
-  var scl = 10;
-  var w = 2000;
-  var h = 600;
+  var scl = 12;
+  var w = window.innerWidth*1.1;
+  var h = window.innerHeight/4;
   var flying = 0;
   var terrain = [];
 
@@ -25,15 +25,15 @@ var sketchDown = function(p) {
     for (var y = 0; y < p.rows; y++) {
       var xoff = 0;
       for (var x = 0; x < p.cols; x++) {
-        terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -100, 100);
+        terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -100, 160);
         xoff += 0.1;
       }
-      yoff += 0.25;
+      yoff += 0.2;
     }
 
     p.background(44);
-    p.translate(0, 50);
-    p.rotateX(p.PI / 3);
+    p.translate(0, window.innerHeight/20);
+    p.rotateX(p.PI / 6);
     p.fill(165, 50, 47, 150);
     p.translate(-w / 2, -h / 2);
     for (var y = 0; y < p.rows - 1; y++) {
@@ -49,9 +49,9 @@ var sketchDown = function(p) {
 
 var sketchUp = function(p) {
   var cols, rows;
-  var scl = 10;
-  var w = 2000;
-  var h = 600;
+  var scl = 12;
+  var w = window.innerWidth*1.1;
+  var h = window.innerHeight/4;
   var flying = 0;
   var terrain = [];
 
@@ -74,15 +74,15 @@ var sketchUp = function(p) {
     for (var y = 0; y < p.rows; y++) {
       var xoff = 0;
       for (var x = 0; x < p.cols; x++) {
-        terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -100, 100);
+        terrain[x][y] = p.map(p.noise(xoff, yoff), 0, 1, -100, 160);
         xoff += 0.1;
       }
-      yoff += 0.25;
+      yoff += 0.2;
     }
 
     p.background(44);
-    p.translate(0, -160);
-    p.rotateX(-p.PI / 3);
+    p.translate(0, -window.innerHeight/8);
+    p.rotateX(-p.PI / 6);
     p.fill(34, 182, 185, 150);
     p.translate(-w / 2, -h / 2);
     for (var y = 0; y < p.rows - 1; y++) {
