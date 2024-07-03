@@ -48,14 +48,15 @@ body {
 
 }
 
-.back_btn {
-  width: fit-content;
-  font-size: 1rem;
-  border-radius: 50px;
-  background: rgb(170, 0, 0);
-  background: linear-gradient(90deg, rgba(170, 0, 0, 1) 0%, rgba(46, 176, 179, 1) 100%);
-  border: none;
-
+  .back_btn{
+    width: fit-content;
+    font-size: 1rem;
+    padding: 5px 40px    ;
+    border-radius: 50px;
+    background: rgb(170,0,0);
+background: linear-gradient(90deg, rgba(170,0,0,1) 0%, rgba(46,176,179,1) 100%);
+border: none;
+    
 
 
 }

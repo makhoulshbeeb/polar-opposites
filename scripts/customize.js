@@ -77,13 +77,3 @@ for (let i = 0; i < left_button_1.length; i++) {
 
 }
 
-
-
-// functioning the back button
-
-let back_btn = document.getElementsByClassName("back_btn")
-
-back_btn[0].addEventListener('click',()=>{
-  console.log("back to main page");
-  window.location.href = 'index.html';
-});
