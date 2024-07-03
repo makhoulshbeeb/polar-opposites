@@ -93,7 +93,7 @@ class UpperScene extends Phaser.Scene {
         player.setFriction(0);
         player.setFrictionStatic(0);
         player.setFixedRotation();
-        player.play('run_anim');
+        player.play('idle_anim');
         player.setBounce(0.1);
         // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
@@ -169,7 +169,7 @@ class LowerScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('layer1', encodeURI('assets/Cave Level/Layer 1.png'));
+        this.load.image('layer1', encodeURI('assets/Cave Level/Layer 1 .png'));
         this.load.image('layer2', encodeURI('assets/Cave Level/Layer 2.png'));
         this.load.image('layer3', encodeURI('assets/Cave Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/Cave Level/Layer 4.png'));
@@ -234,7 +234,7 @@ class LowerScene extends Phaser.Scene {
         player2.setFriction(0);
         player2.setFrictionStatic(0);
         player2.setFixedRotation();
-        player2.play('run_anim');
+        player2.play('idle_anim');
         player2.setBounce(0.1);
         // this.cameras.main.X = player2.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player2.body.y - ActualScreenHeight / 2;
