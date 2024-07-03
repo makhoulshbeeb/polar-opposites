@@ -156,3 +156,7 @@ body{
     max-height: 40px;
     padding-top: 10px; /* Ensure it doesn't exceed container */
 }
+
+audio{
+    display: none;
+}

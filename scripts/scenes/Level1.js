@@ -21,6 +21,12 @@ class LowerScene extends Phaser.Scene {
         this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
 
         this.load.image('player', encodeURI("assets/Red Player/Red Player.svg"))
+
+        // laoding audio 
+        // jump audio 
+        this.load.audio('jump','assets/Music/jump.mp3')
+        // fall audio
+
         cursors = this.input.keyboard.createCursorKeys();
     }
     create() {
@@ -79,6 +85,7 @@ class LowerScene extends Phaser.Scene {
         player.setBounce(0.1);
         // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
+        this.jumpSound = this.sound.add('jump');
     }
 
     update() {
@@ -113,6 +120,8 @@ class LowerScene extends Phaser.Scene {
                 jump = true;
                 idle = false;
                 run = false;
+             this.jumpSound.play();
+
             }
             player.setVelocityY(-gravity * speed);
         }
