@@ -3,6 +3,7 @@ let run = false;
 let idle = true;
 let jump = false;
 let fall = false;
+let switching = false;
 
 class LowerScene extends Phaser.Scene {
     constructor() {
@@ -24,8 +25,8 @@ class LowerScene extends Phaser.Scene {
         cursors = this.input.keyboard.createCursorKeys();
     }
     create() {
-        this.cameras.main.setBounds(0,0,1480,1080);
-        this.cameras.main.setOrigin(0,0.5);
+        this.cameras.main.setBounds(0, 0, 1480, 1080);
+        this.cameras.main.setOrigin(0, 0.5);
         this.matter.world.setBounds(0, 22, 1480, 360);
         console.warn('scene created');
 
@@ -94,7 +95,7 @@ class LowerScene extends Phaser.Scene {
             }
             player.setScale(0.2, 0.2 * gravity);
             player.setVelocityX(-speed * 2.5);
-            camera.scrollX -= speed*1.5;
+            camera.scrollX -= speed * 1.5;
         }
         if (cursors.right.isDown) {
             if (!run) {
@@ -105,7 +106,7 @@ class LowerScene extends Phaser.Scene {
             }
             player.setScale(-0.2, 0.2 * gravity)
             player.setVelocityX(speed * 2.5);
-            camera.scrollX += speed*1.5;
+            camera.scrollX += speed * 1.5;
         }
         if (cursors.up.isDown) {
             if (!jump) {
@@ -117,19 +118,23 @@ class LowerScene extends Phaser.Scene {
             player.setVelocityY(-gravity * speed);
         }
         if (cursors.space.isDown) {
-            gravity *= -1;
-            player.setVelocityY(0);
-            player.setScale(-0.2, 0.2 * gravity);
-            this.matter.world.setGravity(0, gravity);
+            if (!switching) {
+                gravity *= -1;
+                player.setVelocityY(0);
+                player.setScale(-0.2, 0.2 * gravity);
+                this.matter.world.setGravity(0, gravity);
+                switching=true;
+            }
+        }else{
+            switching=false;
         }
-        if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown)) {
+        if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.space.isDown)) {
             if (!idle) player.play('idle_anim');
             jump = false;
             idle = true;
             run = false;
-
         }
-        camera.scrollY=player.body.position.y/8;
+        camera.scrollY = player.body.position.y / 8;
         console.log(camera.scrollY);
     }
 
@@ -167,7 +172,7 @@ let gravity = -1;
 // };
 const configLower = {
     type: Phaser.AUTO,
-    width: window.innerWidth*0.84,
+    width: window.innerWidth * 0.84,
     height: window.innerHeight / 2,
     physics: {
         default: 'matter',
