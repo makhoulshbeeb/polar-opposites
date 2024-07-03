@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="user-scalable=0, initial-scale=1,minimum-scale=1, maximum-scale=1, width=device-width, minimal-ui=1">
+    <title>Level 1</title>
+    <link rel="stylesheet" href="/styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+      canvas {   display : block;   margin : auto;}
+    </style>
+    <script src="scripts/lib/phaser.min.js"></script>
+    <script src="/scripts/lib/decomp.min.js"></script>
+    <script src="/scripts/lib/pathseg.js"></script>
+  </head>
+  <body>
+    <div id="level-container">
+      <div id="game-container">
+        <div id="upper-scene" class="scene"></div>
+        <div id="lower-scene" class="scene"></div>
+      </div>
+      <div id="sidebar">
+        <div id="lives">
+          <img src="assets/Icons/full_heart.png" />
+          <img src="assets/Icons/full_heart.png" />
+          <img src="assets/Icons/full_heart.png" />
+        </div>
+      <div class="pause">
+        <img src="assets/Icons/pause.png">
+      </div>
+
+        <div id="images">
+          <img id="switch1" src="assets/Icons/switch.png" />
+          <img id="switch2" src="assets/Icons/switch.png" />
+          <img id="switch3" src="assets/Icons/switch.png" />
+        </div>
+      </div>
+    </div>
+
+    <script type="module" src="/scripts/scenes/Level2.js"></script>
+
+    <script src="/scripts/SideBar.js"></script>
+  </body>
+</html>
