@@ -95,7 +95,6 @@ body{
 }
 .side{
     width:16%;
-   
 }
 
 #terrainDown{
@@ -130,11 +129,15 @@ body{
     flex-direction: column;
     align-items: center;
     gap: 20px;
+    padding-top: 7%;
 }
+
 #sidebar img {
     display: block;
     margin-bottom: 10px;
+    object-fit: contain;
     width: 70px;
+    height: 80px;
 }
 #images img{
     display: block;
@@ -152,7 +155,11 @@ body{
 
 .pause img {
     width: 20px;
-    height: auto; /* Maintain aspect ratio */
+    height: auto; 
     max-height: 40px;
-    padding-top: 10px; /* Ensure it doesn't exceed container */
+    padding-top: 10px; 
 }
+audio{
+    display: none;
+}
+.switchUpdate{opacity: 0.5;}

@@ -86,4 +86,4 @@ let back_btn = document.getElementsByClassName("back_btn")
 back_btn[0].addEventListener('click',()=>{
   console.log("back to main page");
   window.location.href = 'index.html';
-});
+})
