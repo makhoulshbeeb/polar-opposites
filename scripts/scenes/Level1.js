@@ -7,6 +7,7 @@ let fall = false;
 let switching = false;
 let touchingGround=true;
 let player;
+let player2;
 let cursors;
 let gravity = -1;
 let gravity2 = 1;
@@ -87,7 +88,7 @@ class LowerScene extends Phaser.Scene {
 
         //Player config
 
-        player = this.matter.add.sprite(48, 84, 'player').setOrigin(0.5, 0.5).setScale(-0.2, 0.2 * gravity).setScrollFactor(1);
+        player = this.matter.add.sprite(48, 84, 'player').setOrigin(0.5, 0.5).setScale(-1, gravity).setScrollFactor(1);
         player.setFriction(0);
         player.setFrictionStatic(0);
         player.setFixedRotation();
@@ -184,8 +185,8 @@ class UpperScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('layer1', encodeURI('assets/Asian egybt level/firtLayer.png'));
-        this.load.image('layer2', encodeURI('assets/Asian egybt level/secodlayer.png'));
+        this.load.image('layer1', encodeURI('assets/Asian egybt level/firstLayer.png'));
+        this.load.image('layer2', encodeURI('assets/Asian egybt level/secondlayer.png'));
         this.load.image('layer3', encodeURI('assets/Asian egybt level/thirdlayer.png'));
         this.load.image('layer4', encodeURI('assets/Asian egybt level/fourth layer.png'));
 
@@ -214,25 +215,25 @@ class UpperScene extends Phaser.Scene {
         //Animations
 
         const config_idle = {
-            key: 'idle_anim',
+            key: 'idle_anim2',
             frames: 'idle',
             frameRate: 12,
             repeat: -1
         };
         const config_run = {
-            key: 'run_anim',
+            key: 'run_anim2',
             frames: 'running',
             frameRate: 12,
             repeat: -1
         };
         const config_jump = {
-            key: 'jump_anim',
+            key: 'jump_anim2',
             frames: 'jumping',
             frameRate: 12,
             repeat: -1
         };
         const config_fall = {
-            key: 'fall_anim',
+            key: 'fall_anim2',
             frames: 'falling',
             frameRate: 12,
             repeat: -1
@@ -243,58 +244,58 @@ class UpperScene extends Phaser.Scene {
         this.anims.create(config_jump);
         this.anims.create(config_fall);
 
-        //Player config
+        //Player2 config
 
-        player = this.matter.add.sprite(48, 84, 'player').setOrigin(0.5, 0.5).setScale(-0.2, 0.2 * gravity2).setScrollFactor(1);
-        player.setFriction(0);
-        player.setFrictionStatic(0);
-        player.setFixedRotation();
-        player.play('run_anim');
-        player.setBounce(0.1);
-        // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
-        // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
+        player2 = this.matter.add.sprite(48, 84, 'player2').setOrigin(0.5, 0.5).setScale(-0.2, 0.2 * gravity2).setScrollFactor(1);
+        player2.setFriction(0);
+        player2.setFrictionStatic(0);
+        player2.setFixedRotation();
+        player2.play('run_anim2');
+        player2.setBounce(0.1);
+        // this.cameras.main.X = player2.body.x - ActualScreenWidth / 2;
+        // this.cameras.main.Y = player2.body.y - ActualScreenHeight / 2;
     }
 
     update() {
         const camera = this.cameras.main;
         const speed = 2;
-        player.setVelocityX(0);
+        player2.setVelocityX(0);
         if (cursors.left.isDown) {
             if (!run) {
-                player.play('run_anim');
+                player2.play('run_anim2');
                 jump = false;
                 idle = false;
                 run = true;
             }
-            player.setScale(1, gravity);
-            player.setVelocityX(-speed * 2.5);
+            player2.setScale(1, gravity);
+            player2.setVelocityX(-speed * 2.5);
             camera.scrollX -= speed * 1.5;
         }
         if (cursors.right.isDown) {
             if (!run) {
-                player.play('run_anim');
+                player2.play('run_anim2');
                 jump = false;
                 idle = false;
                 run = true;
             }
-            player.setScale(-1, gravity)
-            player.setVelocityX(speed * 2.5);
+            player2.setScale(-1, gravity)
+            player2.setVelocityX(speed * 2.5);
             camera.scrollX += speed * 1.5;
         }
         if (cursors.up.isDown) {
             if (!jump && touchingGround) {
-                player.play('jump_anim');
+                player2.play('jump_anim2');
                 jump = true;
                 idle = false;
                 run = false;
             }
-            player.setVelocityY(-gravity * speed);
+            player2.setVelocityY(-gravity * speed);
         }
         if (cursors.space.isDown) {
             if (!switching) {
                 gravity *= -1;
-                player.setVelocityY(0);
-                player.setScale(-1, 1* gravity);
+                player2.setVelocityY(0);
+                player2.setScale(-1, 1* gravity);
                 this.matter.world.setGravity(0, gravity);
                 switching=true;
             }
@@ -302,12 +303,12 @@ class UpperScene extends Phaser.Scene {
             switching=false;
         }
         if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.space.isDown)) {
-            if (!idle) player.play('idle_anim');
+            if (!idle) player2.play('idle_anim2');
             jump = false;
             idle = true;
             run = false;
         }
-        camera.scrollY = player.body.position.y / 8;
+        camera.scrollY = player2.body.position.y / 8;
         console.log(camera.scrollY);
     }
 }
