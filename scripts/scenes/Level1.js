@@ -26,6 +26,8 @@ class LowerScene extends Phaser.Scene {
         // laoding audio 
         // jump audio 
         this.load.audio('jump','assets/Music/jump.mp3')
+        this.load.audio('switch','assets/Music/switch.mp3')
+
         // fall audio
 
         cursors = this.input.keyboard.createCursorKeys();
@@ -87,6 +89,7 @@ class LowerScene extends Phaser.Scene {
         // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
         this.jumpSound = this.sound.add('jump');
+        this.switchSound=this.sound.add('switch')
     }
 
     update() {
@@ -133,6 +136,8 @@ class LowerScene extends Phaser.Scene {
                 player.setScale(-0.2, 0.2 * gravity);
                 this.matter.world.setGravity(0, gravity);
                 switching=true;
+             this.switchSound.play();
+
             }
         }else{
             switching=false;
