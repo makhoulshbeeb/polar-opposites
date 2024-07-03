@@ -1,9 +1,16 @@
 let skin_red = localStorage.getItem('current_skin_1');
+let skin_blue = localStorage.getItem('current_skin_2');
 let run = false;
 let idle = true;
 let jump = false;
 let fall = false;
 let switching = false;
+let touchingGround=true;
+let player;
+let cursors;
+let gravity = -1;
+let gravity2 = 1;
+
 
 class LowerScene extends Phaser.Scene {
     constructor() {
@@ -93,7 +100,7 @@ class LowerScene extends Phaser.Scene {
                 idle = false;
                 run = true;
             }
-            player.setScale(0.2, 0.2 * gravity);
+            player.setScale(1, gravity);
             player.setVelocityX(-speed * 2.5);
             camera.scrollX -= speed * 1.5;
         }
@@ -104,12 +111,12 @@ class LowerScene extends Phaser.Scene {
                 idle = false;
                 run = true;
             }
-            player.setScale(-0.2, 0.2 * gravity)
+            player.setScale(-1, gravity)
             player.setVelocityX(speed * 2.5);
             camera.scrollX += speed * 1.5;
         }
         if (cursors.up.isDown) {
-            if (!jump) {
+            if (!jump && touchingGround) {
                 player.play('jump_anim');
                 jump = true;
                 idle = false;
@@ -121,7 +128,7 @@ class LowerScene extends Phaser.Scene {
             if (!switching) {
                 gravity *= -1;
                 player.setVelocityY(0);
-                player.setScale(-0.2, 0.2 * gravity);
+                player.setScale(-1, 1* gravity);
                 this.matter.world.setGravity(0, gravity);
                 switching=true;
             }
@@ -157,10 +164,140 @@ class LowerScene extends Phaser.Scene {
 //         update: update
 //     }
 // };
+class UpperScene extends Phaser.Scene {
+    constructor() {
+        super({ key: 'Level 1' });
+    }
 
-let player;
-let cursors;
-let gravity = -1;
+    preload() {
+        this.load.image('layer1', encodeURI('assets/Asian egybt level/firtLayer.png'));
+        this.load.image('layer2', encodeURI('assets/Asian egybt level/secodlayer.png'));
+        this.load.image('layer3', encodeURI('assets/Asian egybt level/thirdlayer.png'));
+        this.load.image('layer4', encodeURI('assets/Asian egybt level/fourth layer.png'));
+
+        this.load.spritesheet('running', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Run_spritesheet.png`), { frameWidth: 398, frameHeight: 416 });
+        this.load.spritesheet('falling', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Falling_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('jumping', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Jump_spritesheet.png`), { frameWidth: 374, frameHeight: 428 });
+        this.load.spritesheet('idle', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+
+        this.load.image('player', encodeURI("assets/Blue Player/Blue Player.svg"))
+        cursors = this.input.keyboard.createCursorKeys();
+    }
+    create() {
+        this.cameras.main.setBounds(0, 0, 1480, 1080);
+        this.cameras.main.setOrigin(0, 0.5);
+        this.matter.world.setBounds(0, 22, 1480, 360);
+        console.warn('scene created');
+
+        // Layers and Platforms
+
+        this.add.image(0, 0, 'layer4').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(0, 0);
+        this.add.image(0, 0, 'layer3').setOrigin(0, 0.22).setScale(0.375, 0.6).setScrollFactor(0.6, -1.5);
+        this.add.image(0, 0, 'layer2').setOrigin(0, 0.12).setScale(0.375, 0.5).setScrollFactor(1.2, -0.75);
+        this.add.image(0, 10, 'layer1').setOrigin(0, 0.075).setScale(0.375, 0.375).setScrollFactor(2, 0);
+
+        // const ceiling = this.matter.add.rectangle(400, 20, 5100, 20, { isStatic: true });
+        //Animations
+
+        const config_idle = {
+            key: 'idle_anim',
+            frames: 'idle',
+            frameRate: 12,
+            repeat: -1
+        };
+        const config_run = {
+            key: 'run_anim',
+            frames: 'running',
+            frameRate: 12,
+            repeat: -1
+        };
+        const config_jump = {
+            key: 'jump_anim',
+            frames: 'jumping',
+            frameRate: 12,
+            repeat: -1
+        };
+        const config_fall = {
+            key: 'fall_anim',
+            frames: 'falling',
+            frameRate: 12,
+            repeat: -1
+        };
+
+        this.anims.create(config_idle);
+        this.anims.create(config_run);
+        this.anims.create(config_jump);
+        this.anims.create(config_fall);
+
+        //Player config
+
+        player = this.matter.add.sprite(48, 84, 'player').setOrigin(0.5, 0.5).setScale(-0.2, 0.2 * gravity2).setScrollFactor(1);
+        player.setFriction(0);
+        player.setFrictionStatic(0);
+        player.setFixedRotation();
+        player.play('run_anim');
+        player.setBounce(0.1);
+        // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
+        // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
+    }
+
+    update() {
+        const camera = this.cameras.main;
+        const speed = 2;
+        player.setVelocityX(0);
+        if (cursors.left.isDown) {
+            if (!run) {
+                player.play('run_anim');
+                jump = false;
+                idle = false;
+                run = true;
+            }
+            player.setScale(1, gravity);
+            player.setVelocityX(-speed * 2.5);
+            camera.scrollX -= speed * 1.5;
+        }
+        if (cursors.right.isDown) {
+            if (!run) {
+                player.play('run_anim');
+                jump = false;
+                idle = false;
+                run = true;
+            }
+            player.setScale(-1, gravity)
+            player.setVelocityX(speed * 2.5);
+            camera.scrollX += speed * 1.5;
+        }
+        if (cursors.up.isDown) {
+            if (!jump && touchingGround) {
+                player.play('jump_anim');
+                jump = true;
+                idle = false;
+                run = false;
+            }
+            player.setVelocityY(-gravity * speed);
+        }
+        if (cursors.space.isDown) {
+            if (!switching) {
+                gravity *= -1;
+                player.setVelocityY(0);
+                player.setScale(-1, 1* gravity);
+                this.matter.world.setGravity(0, gravity);
+                switching=true;
+            }
+        }else{
+            switching=false;
+        }
+        if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.space.isDown)) {
+            if (!idle) player.play('idle_anim');
+            jump = false;
+            idle = true;
+            run = false;
+        }
+        camera.scrollY = player.body.position.y / 8;
+        console.log(camera.scrollY);
+    }
+}
+
 
 
 // const configUpper = {
@@ -170,6 +307,27 @@ let gravity = -1;
 //     scene: UpperScene,
 //     parent: 'upper-scene'
 // };
+const configUpper = {
+    type: Phaser.AUTO,
+    width: window.innerWidth * 0.84,
+    height: window.innerHeight / 2,
+    physics: {
+        default: 'matter',
+        matter: {
+            enableSleeping: true,
+            gravity: {
+                y: gravity2
+            },
+            debug: {
+                showBody: true,
+                showStaticBody: true,
+                showAxes: true
+            }
+        }
+    },
+    scene: UpperScene,
+    parent: 'upper-scene',
+};
 const configLower = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,
@@ -191,5 +349,5 @@ const configLower = {
     scene: LowerScene,
     parent: 'lower-scene',
 };
-// const gameUpper = new Phaser.Game(configUpper);
+const gameUpper = new Phaser.Game(configUpper);
 const gameLower = new Phaser.Game(configLower);
