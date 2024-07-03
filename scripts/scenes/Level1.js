@@ -9,11 +9,12 @@ let touchingGround=true;
 let player;
 let player2;
 let cursors;
+let cursors2;
 let gravity = -1;
 let gravity2 = 1;
 
 
-class LowerScene extends Phaser.Scene {
+class UpperScene extends Phaser.Scene {
     constructor() {
         super({ key: 'Level 1' });
     }
@@ -24,10 +25,10 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer3', encodeURI('assets/City Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
-        this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 398, frameHeight: 416 });
-        this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
-        this.load.spritesheet('jumping', encodeURI(`assets/Red Player/${skin_red}/Red_Jump_spritesheet.png`), { frameWidth: 374, frameHeight: 428 });
-        this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('jumping', encodeURI(`assets/Red Player/${skin_red}/Red_Jump_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
 
         this.load.image('player', encodeURI("assets/Red Player/Red Player.svg"))
 
@@ -161,42 +162,25 @@ class LowerScene extends Phaser.Scene {
     }
 
 }
-// const config = {
-//     type: Phaser.AUTO,
-//     width: 800,
-//     height: 600,
-//     parent: 'game-container',
-//     physics: {
-//         default: 'matter',
-//         matter: {
-//             gravity: { y: 1 },
-//             debug: true
-//         }
-//     },
-//     scene: {
-//         preload: preload,
-//         create: create,
-//         update: update
-//     }
-// };
-class UpperScene extends Phaser.Scene {
+
+class LowerScene extends Phaser.Scene {
     constructor() {
         super({ key: 'Level 1' });
     }
 
     preload() {
-        this.load.image('layer1', encodeURI('assets/Asian egybt level/firstLayer.png'));
-        this.load.image('layer2', encodeURI('assets/Asian egybt level/secondlayer.png'));
-        this.load.image('layer3', encodeURI('assets/Asian egybt level/thirdlayer.png'));
-        this.load.image('layer4', encodeURI('assets/Asian egybt level/fourth layer.png'));
+        this.load.image('layer1', encodeURI('assets/Cave Level/Layer 1.png'));
+        this.load.image('layer2', encodeURI('assets/Cave Level/Layer 2.png'));
+        this.load.image('layer3', encodeURI('assets/Cave Level/Layer 3.png'));
+        this.load.image('layer4', encodeURI('assets/Cave Level/Layer 4.png'));
 
-        this.load.spritesheet('running', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Run_spritesheet.png`), { frameWidth: 398, frameHeight: 416 });
-        this.load.spritesheet('falling', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Falling_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
-        this.load.spritesheet('jumping', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Jump_spritesheet.png`), { frameWidth: 374, frameHeight: 428 });
-        this.load.spritesheet('idle', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('running', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Run_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('falling', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Falling_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('jumping', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Jump_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
+        this.load.spritesheet('idle', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Idle_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
 
         this.load.image('player', encodeURI("assets/Blue Player/Blue Player.svg"))
-        cursors = this.input.keyboard.createCursorKeys();
+        cursors2 = this.input.keyboard.createCursorKeys();
     }
     create() {
         this.cameras.main.setBounds(0, 0, 1480, 1080);
@@ -215,25 +199,25 @@ class UpperScene extends Phaser.Scene {
         //Animations
 
         const config_idle = {
-            key: 'idle_anim2',
+            key: 'idle_anim',
             frames: 'idle',
             frameRate: 12,
             repeat: -1
         };
         const config_run = {
-            key: 'run_anim2',
+            key: 'run_anim',
             frames: 'running',
             frameRate: 12,
             repeat: -1
         };
         const config_jump = {
-            key: 'jump_anim2',
+            key: 'jump_anim',
             frames: 'jumping',
             frameRate: 12,
             repeat: -1
         };
         const config_fall = {
-            key: 'fall_anim2',
+            key: 'fall_anim',
             frames: 'falling',
             frameRate: 12,
             repeat: -1
@@ -246,11 +230,11 @@ class UpperScene extends Phaser.Scene {
 
         //Player2 config
 
-        player2 = this.matter.add.sprite(48, 84, 'player2').setOrigin(0.5, 0.5).setScale(-0.2, 0.2 * gravity2).setScrollFactor(1);
+        player2 = this.matter.add.sprite(48, 84, 'player2').setOrigin(0.5, 0.5).setScale(-1,gravity2).setScrollFactor(1);
         player2.setFriction(0);
         player2.setFrictionStatic(0);
         player2.setFixedRotation();
-        player2.play('run_anim2');
+        player2.play('run_anim');
         player2.setBounce(0.1);
         // this.cameras.main.X = player2.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player2.body.y - ActualScreenHeight / 2;
@@ -260,9 +244,9 @@ class UpperScene extends Phaser.Scene {
         const camera = this.cameras.main;
         const speed = 2;
         player2.setVelocityX(0);
-        if (cursors.left.isDown) {
+        if (cursors2.a.isDown) {
             if (!run) {
-                player2.play('run_anim2');
+                player2.play('run_anim');
                 jump = false;
                 idle = false;
                 run = true;
@@ -271,9 +255,9 @@ class UpperScene extends Phaser.Scene {
             player2.setVelocityX(-speed * 2.5);
             camera.scrollX -= speed * 1.5;
         }
-        if (cursors.right.isDown) {
+        if (cursors2.d.isDown) {
             if (!run) {
-                player2.play('run_anim2');
+                player2.play('run_anim');
                 jump = false;
                 idle = false;
                 run = true;
@@ -282,16 +266,16 @@ class UpperScene extends Phaser.Scene {
             player2.setVelocityX(speed * 2.5);
             camera.scrollX += speed * 1.5;
         }
-        if (cursors.up.isDown) {
+        if (cursors2.w.isDown) {
             if (!jump && touchingGround) {
-                player2.play('jump_anim2');
+                player2.play('jump_anim');
                 jump = true;
                 idle = false;
                 run = false;
             }
             player2.setVelocityY(-gravity * speed);
         }
-        if (cursors.space.isDown) {
+        if (cursors2.space.isDown) {
             if (!switching) {
                 gravity *= -1;
                 player2.setVelocityY(0);
@@ -303,7 +287,7 @@ class UpperScene extends Phaser.Scene {
             switching=false;
         }
         if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.space.isDown)) {
-            if (!idle) player2.play('idle_anim2');
+            if (!idle) player2.play('idle_anim');
             jump = false;
             idle = true;
             run = false;
@@ -313,15 +297,6 @@ class UpperScene extends Phaser.Scene {
     }
 }
 
-
-
-// const configUpper = {
-//     type: Phaser.AUTO,
-//     width: 800,
-//     height: 300,
-//     scene: UpperScene,
-//     parent: 'upper-scene'
-// };
 const configUpper = {
     type: Phaser.AUTO,
     width: window.innerWidth * 0.84,
