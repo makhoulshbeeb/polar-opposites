@@ -93,6 +93,9 @@ body{
     margin-left: 16dvw;
     display: none;
 }
+#back-button{
+    cursor: pointer;
+}
 .side{
     width:16%;
 }

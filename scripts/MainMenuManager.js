@@ -7,3 +7,7 @@ window.addEventListener("click",()=>{
     bg_audio.play()
 
 })
+document.getElementById("back-button").addEventListener('click', function(){
+    $("#levels").toggle();
+    $("#left").toggle();
+});
