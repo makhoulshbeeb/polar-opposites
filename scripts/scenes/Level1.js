@@ -11,8 +11,8 @@ let player2;
 let cursors;
 let cursors2;
 let cursors3;
-let gravity = -1;
-let gravity2 = 1;
+let gravity = 1;
+let gravity2 = -1;
 
 
 class UpperScene extends Phaser.Scene {
@@ -235,7 +235,7 @@ class LowerScene extends Phaser.Scene {
 
         //Player2 config
 
-        player2 = this.matter.add.sprite(48, 84, 'player2').setOrigin(0.5, 0.5).setScale(-1,gravity2).setScrollFactor(1);
+        player2 = this.matter.add.sprite(48, 120, 'player2').setOrigin(0.5, 0.5).setScale(-1,gravity2).setScrollFactor(1);
         player2.setFriction(0);
         player2.setFrictionStatic(0);
         player2.setFixedRotation();
@@ -282,10 +282,11 @@ class LowerScene extends Phaser.Scene {
         }
         if (cursors3.space.isDown) {
             if (!switching) {
-                gravity *= -1;
+                console.warn("flip");
+                gravity2 *= -1;
                 player2.setVelocityY(0);
-                player2.setScale(-1, 1* gravity);
-                this.matter.world.setGravity(0, gravity);
+                player2.setScale(-1, 1* gravity2);
+                this.matter.world.setGravity(0, gravity2);
                 switching=true;
             }
         }else{
