@@ -10,6 +10,7 @@ let player;
 let player2;
 let cursors;
 let cursors2;
+let cursors3;
 let gravity = -1;
 let gravity2 = 1;
 
@@ -98,7 +99,7 @@ class UpperScene extends Phaser.Scene {
         // this.cameras.main.X = player.body.x - ActualScreenWidth / 2;
         // this.cameras.main.Y = player.body.y - ActualScreenHeight / 2;
         this.jumpSound = this.sound.add('jump');
-        this.switchSound=this.sound.add('switch')
+        this.switchSound=this.sound.add('switch');
     }
 
     update() {
@@ -158,7 +159,6 @@ class UpperScene extends Phaser.Scene {
             run = false;
         }
         camera.scrollY = player.body.position.y / 8;
-        console.log(camera.scrollY);
     }
 
 }
@@ -169,7 +169,7 @@ class LowerScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('layer1', encodeURI('assets/Cave Level/Layer 1 .png'));
+        this.load.image('layer1', encodeURI('assets/Cave Level/Layer 1.png'));
         this.load.image('layer2', encodeURI('assets/Cave Level/Layer 2.png'));
         this.load.image('layer3', encodeURI('assets/Cave Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/Cave Level/Layer 4.png'));
@@ -180,7 +180,11 @@ class LowerScene extends Phaser.Scene {
         this.load.spritesheet('idle', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Idle_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
 
         this.load.image('player', encodeURI("assets/Blue Player/Blue Player.svg"))
-        cursors2 = this.input.keyboard.createCursorKeys();
+        
+        cursors2 =this.input.keyboard.addKeys("W,A,S,D");
+        cursors3 = this.input.keyboard.createCursorKeys();
+
+        console.warn(cursors2);
     }
     create() {
         this.cameras.main.setBounds(0, 0, 1480, 1080);
@@ -190,9 +194,10 @@ class LowerScene extends Phaser.Scene {
 
         // Layers and Platforms
 
+        
         this.add.image(0, 0, 'layer4').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(0, 0);
-        this.add.image(0, 0, 'layer3').setOrigin(0, 0.22).setScale(0.375, 0.6).setScrollFactor(0.6, -1.5);
-        this.add.image(0, 0, 'layer2').setOrigin(0, 0.12).setScale(0.375, 0.5).setScrollFactor(1.2, -0.75);
+        this.add.image(0, 0, 'layer3').setOrigin(0, -0.15).setScale(0.375, 0.375).setScrollFactor(0.6, -1.5);
+        this.add.image(0, 0, 'layer2').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(1.2, -0.75);
         this.add.image(0, 10, 'layer1').setOrigin(0, 0.075).setScale(0.375, 0.375).setScrollFactor(2, 0);
 
         // const ceiling = this.matter.add.rectangle(400, 20, 5100, 20, { isStatic: true });
@@ -244,7 +249,7 @@ class LowerScene extends Phaser.Scene {
         const camera = this.cameras.main;
         const speed = 2;
         player2.setVelocityX(0);
-        if (cursors2.a.isDown) {
+        if (cursors2.A.isDown) {
             if (!run) {
                 player2.play('run_anim');
                 jump = false;
@@ -255,7 +260,7 @@ class LowerScene extends Phaser.Scene {
             player2.setVelocityX(-speed * 2.5);
             camera.scrollX -= speed * 1.5;
         }
-        if (cursors2.d.isDown) {
+        if (cursors2.D.isDown) {
             if (!run) {
                 player2.play('run_anim');
                 jump = false;
@@ -266,7 +271,7 @@ class LowerScene extends Phaser.Scene {
             player2.setVelocityX(speed * 2.5);
             camera.scrollX += speed * 1.5;
         }
-        if (cursors2.w.isDown) {
+        if (cursors2.W.isDown) {
             if (!jump && touchingGround) {
                 player2.play('jump_anim');
                 jump = true;
@@ -275,7 +280,7 @@ class LowerScene extends Phaser.Scene {
             }
             player2.setVelocityY(-gravity * speed);
         }
-        if (cursors2.space.isDown) {
+        if (cursors3.space.isDown) {
             if (!switching) {
                 gravity *= -1;
                 player2.setVelocityY(0);
@@ -286,14 +291,13 @@ class LowerScene extends Phaser.Scene {
         }else{
             switching=false;
         }
-        if (!(cursors.left.isDown || cursors.right.isDown || cursors.up.isDown || cursors.space.isDown)) {
+        if (!(cursors2.A.isDown || cursors2.D.isDown || cursors2.W.isDown || cursors3.space.isDown)) {
             if (!idle) player2.play('idle_anim');
             jump = false;
             idle = true;
             run = false;
         }
         camera.scrollY = player2.body.position.y / 8;
-        console.log(camera.scrollY);
     }
 }
 

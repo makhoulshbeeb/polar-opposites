@@ -1,5 +1,4 @@
-const sidebar = document.getElementById("images");
-const images = sidebar.getElementsByTagName("img");
+
 
 let switchCounter = 3;
 
@@ -11,7 +10,7 @@ document.addEventListener("keydown", (event) => {
       }
     }
 });
-const lives = document.querySelectorAll("#lives img");
+const lives = document.querySelectorAll(".lives");
         document.addEventListener("keydown", (event) => {
             if (event.code === "KeyS") {
                 for (let i = 0; i < lives.length; i++) {
