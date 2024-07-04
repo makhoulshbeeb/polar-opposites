@@ -17,10 +17,10 @@ class LowerScene extends Phaser.Scene {
         this.load.image('layer3', encodeURI('assets/City Level/Layer 3.png'));
         this.load.image('layer4', encodeURI('assets/City Level/Layer 4.png'));
 
-        this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 398, frameHeight: 416 });
-        this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
-        this.load.spritesheet('jumping', encodeURI(`assets/Red Player/${skin_red}/Red_Jump_spritesheet.png`), { frameWidth: 374, frameHeight: 428 });
-        this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 398, frameHeight: 419 });
+        this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
+        this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
+        this.load.spritesheet('jumping', encodeURI(`assets/Red Player/${skin_red}/Red_Jump_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
+        this.load.spritesheet('idle', encodeURI(`assets/Red Player/${skin_red}/Red_Idle_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
 
         this.load.image('player', encodeURI("assets/Red Player/Red Player.svg"))
 
@@ -81,7 +81,7 @@ class LowerScene extends Phaser.Scene {
 
         //Player config
 
-        player = this.matter.add.sprite(100, 84, 'player').setOrigin(0.5, 0.5).setScale(-0.4, 0.2 * gravity).setScrollFactor(1);
+        player = this.matter.add.sprite(100, 84, 'player').setOrigin(0.5, 0.5).setScale(-1.5, 0.75 * gravity).setScrollFactor(1);
         player.setFriction(0);
         player.setFrictionStatic(0);
         player.setFixedRotation();
@@ -111,19 +111,19 @@ class LowerScene extends Phaser.Scene {
           }
 
 // create the lower 
-i = 0
-rectX=130;
-rectY=window.innerHeight+20;
-rectHeight=200
+        i = 0   
+        rectX=130;
+        rectY=window.innerHeight+20;
+        rectHeight=200
 
-// my_Y = my_Y*2
-for (let i = 0; i < 19; i++) {
-    // Create the Matter.js rectangle (for physics)
-    const matterRect = this.matter.add.rectangle(rectX, rectY,120, rectHeight, { isStatic: true ,inertia: Infinity });
-    // Create the Phaser 3 rectangle (for visual rendering)
-    const phaserRect = this.add.rectangle(rectX, rectY, 120, rectHeight, 0x000000); // Red fill color
-    rectX += 120;
-    rectHeight = Math.floor(Math.random() * (550 - 200 + 1)) + 200; // exchanged by default hardcoded []
+        // my_Y = my_Y*2
+        for (let i = 0; i < 19; i++) {
+            // Create the Matter.js rectangle (for physics)
+            const matterRect = this.matter.add.rectangle(rectX, rectY,120, rectHeight, { isStatic: true ,inertia: Infinity });
+            // Create the Phaser 3 rectangle (for visual rendering)
+            const phaserRect = this.add.rectangle(rectX, rectY, 120, rectHeight, 0x000000); // Red fill color
+            rectX += 120;
+            rectHeight = Math.floor(Math.random() * (550 - 200 + 1)) + 200; // exchanged by default hardcoded []
 
 }
 
@@ -146,7 +146,7 @@ for (let i = 0; i < 19; i++) {
                 idle = false;
                 run = true;
             }
-            player.setScale(0.4, 0.2 * gravity);
+            player.setScale(1.5, 0.75 * gravity);
             player.setVelocityX(-speed * 2.5);
         }
         if (cursors.right.isDown) {
@@ -156,7 +156,7 @@ for (let i = 0; i < 19; i++) {
                 idle = false;
                 run = true;
             }
-            player.setScale(-0.4, 0.2 * gravity)
+            player.setScale(-1.5, 0.75 * gravity)
             player.setVelocityX(speed * 2.5);
         }
         if (cursors.up.isDown) {
@@ -175,7 +175,7 @@ for (let i = 0; i < 19; i++) {
             if (!switching) {
                 gravity *= -1;
                 player.setVelocityY(0);
-                player.setScale(-0.4, 0.2 * gravity);
+                player.setScale(-1.5, 0.75 * gravity);
                 this.matter.world.setGravity(0, gravity);
                 switching=true;
              this.switchSound.play();

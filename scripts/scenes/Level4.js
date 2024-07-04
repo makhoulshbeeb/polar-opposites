@@ -1,5 +1,6 @@
 let skin_red = localStorage.getItem('current_skin_1');
 let skin_blue = localStorage.getItem('current_skin_2');
+
 let run = false;
 let idle = true;
 let jump = false;
@@ -20,10 +21,10 @@ class LowerScene extends Phaser.Scene {
     }
 
     preload() {
-        this.load.image('layer1', encodeURI('assets/Asian egybt level/firstlayer.png'));
-        this.load.image('layer2', encodeURI('assets/Asian egybt level/secondlayer.png'));
-        this.load.image('layer3', encodeURI('assets/Asian egybt level/thirdlayer.png'));
-        this.load.image('layer4', encodeURI('assets/Asian egybt level/fourthlayer.png'));
+        this.load.image('layer1', encodeURI('assets/Mountain Level/Layer 1.png'));
+        this.load.image('layer2', encodeURI('assets/Mountain Level/Layer 2.png'));
+        this.load.image('layer3', encodeURI('assets/Mountain Level/Layer 3.png'));
+        this.load.image('layer4', encodeURI('assets/Mountain Level/Layer 4.png'));
 
         this.load.spritesheet('running', encodeURI(`assets/Red Player/${skin_red}/Red_Run_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
         this.load.spritesheet('falling', encodeURI(`assets/Red Player/${skin_red}/Red_Falling_spritesheet.png`), { frameWidth: 80, frameHeight: 80});
@@ -35,8 +36,10 @@ class LowerScene extends Phaser.Scene {
         this.load.spritesheet('jumping2', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Jump_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
         this.load.spritesheet('idle2', encodeURI(`assets/Blue Player/${skin_blue}/Blue_Idle_spritesheet.png`), { frameWidth: 80, frameHeight: 80 });
 
+
         this.load.image('player', encodeURI("assets/Red Player/Red Player.svg"))
         this.load.image('player2', encodeURI("assets/Blue Player/Blue Player.svg"))
+
 
         // laoding audio 
         // jump audio 
@@ -46,6 +49,8 @@ class LowerScene extends Phaser.Scene {
         // fall audio
 
         cursors = this.input.keyboard.createCursorKeys();
+
+
     }
     create() {
         this.cameras.main.setBounds(0, 0, 1480, 1080);
@@ -55,14 +60,14 @@ class LowerScene extends Phaser.Scene {
 
         // Layers and Platforms
 
-        this.add.image(0, 0, 'layer4').setOrigin(0.5, 0).setScale(0.75, 0.75).setScrollFactor(0, 0);
+        this.add.image(0, 0, 'layer4').setOrigin(0, 0).setScale(0.75, 0.75).setScrollFactor(0, 0);
         this.add.image(0, 0, 'layer3').setOrigin(0, 0.22).setScale(0.75, 0.6*2).setScrollFactor(0.6, -1.5);
         this.add.image(0, 0, 'layer2').setOrigin(0, 0.12).setScale(0.75, 0.5*2).setScrollFactor(1.2, -0.75);
-        this.add.image(0, 10, 'layer1').setOrigin(0, 0.075).setScale(0.75, 1.2).setScrollFactor(2, 0);
+        this.add.image(0, 10, 'layer1').setOrigin(0, 0.075).setScale(0.75, 0.75).setScrollFactor(2, 0);
+
         // const ceiling = this.matter.add.rectangle(400, 20, 5100, 20, { isStatic: true });
         //Animations
 
-       
         const config_idle = {
             key: 'idle_anim',
             frames: 'idle',
