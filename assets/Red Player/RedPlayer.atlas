@@ -1,0 +1,76 @@
+
+RedPlayer.png
+size: 512,256
+format: RGBA8888
+filter: Linear,Linear
+repeat: none
+Left Thigh
+  rotate: false
+  xy: 199, 1
+  size: 39, 127
+  orig: 39, 127
+  offset: 0, 0
+  index: -1
+Right Calf
+  rotate: false
+  xy: 158, 130
+  size: 39, 115
+  orig: 39, 115
+  offset: 0, 0
+  index: -1
+Left Bicep
+  rotate: false
+  xy: 70, 163
+  size: 29, 71
+  orig: 29, 71
+  offset: 0, 0
+  index: -1
+Left Arm
+  rotate: false
+  xy: 240, 101
+  size: 29, 98
+  orig: 29, 98
+  offset: 0, 0
+  index: -1
+Left Calf
+  rotate: false
+  xy: 199, 130
+  size: 39, 115
+  orig: 39, 115
+  offset: 0, 0
+  index: -1
+Right Thigh
+  rotate: false
+  xy: 158, 1
+  size: 39, 127
+  orig: 39, 127
+  offset: 0, 0
+  index: -1
+Torso
+  rotate: false
+  xy: 1, 1
+  size: 155, 160
+  orig: 155, 160
+  offset: 0, 0
+  index: -1
+Head
+  rotate: false
+  xy: 1, 163
+  size: 67, 66
+  orig: 67, 66
+  offset: 0, 0
+  index: -1
+Right Bicep
+  rotate: false
+  xy: 101, 163
+  size: 29, 71
+  orig: 29, 71
+  offset: 0, 0
+  index: -1
+Right Arm
+  rotate: false
+  xy: 240, 1
+  size: 29, 98
+  orig: 29, 98
+  offset: 0, 0
+  index: -1
