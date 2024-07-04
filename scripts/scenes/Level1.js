@@ -197,7 +197,7 @@ class LowerScene extends Phaser.Scene {
         
         this.add.image(0, 0, 'layer4').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(0, 0);
         this.add.image(0, 0, 'layer3').setOrigin(0, -0.15).setScale(0.375, 0.375).setScrollFactor(0.6, -1.5);
-        this.add.image(0, 0, 'layer2').setOrigin(0, 0).setScale(0.375, 0.375).setScrollFactor(1.2, -0.75);
+        this.add.image(0, 0, 'layer2').setOrigin(0, 0.15).setScale(0.375, 0.5).setScrollFactor(1.2, -0.75);
         this.add.image(0, 10, 'layer1').setOrigin(0, 0.075).setScale(0.375, 0.375).setScrollFactor(2, 0);
 
         // const ceiling = this.matter.add.rectangle(400, 20, 5100, 20, { isStatic: true });
