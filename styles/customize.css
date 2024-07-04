@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Londrina+Solid:wght@100;300;400;900&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Londrina Solid", sans-serif;
+    color: white ;
+    font-size: 1.7rem;
+}
+  
+  body {
+    padding-top: 3%;
+    background-color: #2c2c2c;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5%;
+    height: 100vh;
+    margin: 0;
+  }
+
+  main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10%;
+
+  }
+  
+  .player_customize{
+    display: flex;
+  }
+
+  .player{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .player_customize button{
+    background: none;
+    border: none;
+    height: fit-content;
+    align-self: center;
+    cursor: pointer;
+
+  }
+
+  .back_btn{
+    width: fit-content;
+    font-size: 1rem;
+    padding: 5px 40px    ;
+    border-radius: 50px;
+    background: rgb(170,0,0);
+border: none;
+    
+
+
+  }
+
+  .back_btn:hover{
+    border: 1px rgba(0, 0, 0, 0.318) solid;
+    cursor: pointer;
+    
+    
+  }
+ 
